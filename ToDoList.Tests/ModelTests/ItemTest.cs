@@ -1,6 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ToDoList.Models;
-using System;
+using ToDoList.Models;//namespace here is strict.
+using System.Collections.Generic;
 
 namespace ToDoList.Tests
 {
@@ -11,14 +11,17 @@ namespace ToDoList.Tests
     public void GetDescription_ReturnsDescription_String()
     {
       //Arrange
-      string description = "Walk the dog.";
-      Item newItem = new Item(description);
+      string description01 = "Walk the dog";
+      string description02 = "Wash the dishes";
+      Item newItem1 = new Item(description01);
+      Item newItem2 = new Item(description02);
+      List<Item> newList = new List<Item> { newItem1, newItem2 };
 
       //Act
-      string result = newItem.GetDescription();
+      List<Item> result = Item.GetAll();
 
       //Assert
-      Assert.AreEqual(description, result);
+      CollectionAssert.AreEqual(newList, result);
     }
   }
 }
