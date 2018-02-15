@@ -7,7 +7,7 @@ using System;
 namespace ToDoList.Tests
 {
   [TestClass]
-  public class ItemTest
+  public class ItemTest : IDisposable
   {
     public void Dispose()
     {
@@ -37,14 +37,12 @@ namespace ToDoList.Tests
       Item newItem1 = new Item(description01);
       Item newItem2 = new Item(description02);
       List<Item> newList = new List<Item> { newItem1, newItem2 };
-
       //Act
       List<Item> result = Item.GetAll();
         foreach (Item thisItem in result)
         {
           Debug.WriteLine("Output: " + thisItem.GetDescription());
         }
-
       //Assert
       CollectionAssert.AreEqual(newList, result);
     }
