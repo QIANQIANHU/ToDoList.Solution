@@ -1,12 +1,19 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ToDoList.Models;//namespace here is strict.
 using System.Collections.Generic;
+using System.Diagnostics;
+using System;
 
 namespace ToDoList.Tests
 {
   [TestClass]
   public class ItemTest
   {
+    public void Dispose()
+    {
+      Item.ClearAll();
+    }
+
     [TestMethod]
     public void GetDescription_ReturnsDescription_String()
     {
@@ -33,10 +40,9 @@ namespace ToDoList.Tests
 
       //Act
       List<Item> result = Item.GetAll();
-
         foreach (Item thisItem in result)
         {
-          Console.WriteLine("Output: " + thisItem.GetDescription());
+          Debug.WriteLine("Output: " + thisItem.GetDescription());
         }
 
       //Assert
