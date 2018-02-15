@@ -11,6 +11,20 @@ namespace ToDoList.Tests
     public void GetDescription_ReturnsDescription_String()
     {
       //Arrange
+      string description = "Walk the dog.";
+      Item newItem = new Item(description);
+
+      //Act
+      string result = newItem.GetDescription();
+
+      //Assert
+      Assert.AreEqual(description, result);
+    }
+
+    [TestMethod]
+    public void GetAll_ReturnsItems_ItemList()
+    {
+      //Arrange
       string description01 = "Walk the dog";
       string description02 = "Wash the dishes";
       Item newItem1 = new Item(description01);
@@ -19,6 +33,11 @@ namespace ToDoList.Tests
 
       //Act
       List<Item> result = Item.GetAll();
+
+        foreach (Item thisItem in result)
+        {
+          Console.WriteLine("Output: " + thisItem.GetDescription());
+        }
 
       //Assert
       CollectionAssert.AreEqual(newList, result);
